@@ -7,14 +7,11 @@ import { updateProfileSuccess, updateProfileFailure } from './actions';
 
 export function* updateProfile({ payload }) {
   try {
-    const { name, email, avatar_id, ...rest } = payload.data;
+    const { name, email, ...rest } = payload.data;
 
-    // ESLINT mudou esse modo de escrita para o abaixo.
-    // const profile = Object.assign({name, email}, rest.oldPassword ? rest : {});
     const profile = {
       name,
       email,
-      avatar_id,
       ...(rest.oldPassword ? rest : {}),
     };
 
